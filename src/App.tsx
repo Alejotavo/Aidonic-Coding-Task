@@ -16,8 +16,6 @@ function MainPage() {
   const [region, setRegion] = useState('');
 
   return (
-    <>
-    <Header />
     <div className="container mx-auto px-4 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8">
       <div className="flex flex-col gap-4 mb-4 sm:flex-row">
         <Filter label="Status" value={status} options={statusOptions} onChange={setStatus} />
@@ -25,13 +23,13 @@ function MainPage() {
       </div>
       <Table status={status} region={region} />
     </div>
-    </>
   );
 }
 
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/distribution/:id" element={<DistributionDetails />} />
