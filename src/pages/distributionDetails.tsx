@@ -27,11 +27,16 @@ function DistributionDetails() {
         {detail && detail.beneficiaryList && (
           <div className="mb-2">
             <strong>Beneficiary Names:</strong>
-            <ul className="list-disc list-inside mt-1">
+            <div className="flex flex-wrap gap-2 mt-1">
               {detail.beneficiaryList.map(bnf => (
-                <li key={bnf.id}>{bnf.name}</li>
+                <span
+                  key={bnf.id}
+                  className="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full font-medium"
+                >
+                  {bnf.name}
+                </span>
               ))}
-            </ul>
+            </div>
           </div>
         )}
         <Link to="/" className="inline-block mt-4 text-blue-600 hover:underline">Back to list</Link>
