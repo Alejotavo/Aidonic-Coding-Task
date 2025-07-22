@@ -7,6 +7,7 @@ import Table from './components/tableComponent';
 import Header from './components/UI/header';
 import { distributions } from './service/mockApi';
 import DistributionDetails from './pages/distributionDetails';
+import Dashboard from './pages/dashboard';
 
 const statusOptions = ['Planned', 'Ongoing', 'Completed'];
 const regionOptions = Array.from(new Set(distributions.map((d: { region: string }) => d.region)));
@@ -32,6 +33,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/distribution/:id" element={<DistributionDetails />} />
       </Routes>
     </BrowserRouter>
