@@ -1,10 +1,23 @@
 
+
 import { distributions } from '../service/mockApi';
 import type { Distribution } from '../models/beneficiary';
+import { Link } from 'react-router-dom';
 
-function Table() {
+interface TableProps {
+  status: string;
+  region: string;
+}
 
- 
+function Table({ status, region }: TableProps) {
+  let filteredDistributions = distributions as Distribution[];
+  if (status) {
+    filteredDistributions = filteredDistributions.filter(row => row.status === status);
+  }
+  if (region) {
+    filteredDistributions = filteredDistributions.filter(row => row.region === region);
+  }
+
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full border border-gray-300 rounded-lg overflow-hidden">
@@ -18,7 +31,7 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {(distributions as Distribution[]).map((row, idx) => (
+          {filteredDistributions.map((row, idx) => (
             <tr
               key={row.id}
               className={
@@ -31,7 +44,7 @@ function Table() {
               <td className="px-4 py-2 border-b">{row.status}</td>
               <td className="px-4 py-2 border-b text-right">{row.beneficiaries}</td>
               <td className="px-4 py-2 border-b">
-                <button className="text-blue-600 hover:underline">View</button>
+                <Link to={`/distribution/${row.id}`} className="text-blue-600 hover:underline">Details</Link>
               </td>
             </tr>
           ))}
