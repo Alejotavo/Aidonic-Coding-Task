@@ -6,10 +6,10 @@ import Filter from './components/filterComponent';
 import Table from './components/tableComponent';
 import Header from './components/UI/header';
 import { distributions } from './service/mockApi';
-import DistributionDetails from './components/DistributionDetails';
+import DistributionDetails from './pages/distributionDetails';
 
 const statusOptions = ['Planned', 'Ongoing', 'Completed'];
-const regionOptions = Array.from(new Set((distributions as any[]).map(d => d.region)));
+const regionOptions = Array.from(new Set(distributions.map((d: { region: string }) => d.region)));
 
 function MainPage() {
   const [status, setStatus] = useState('');
@@ -17,12 +17,14 @@ function MainPage() {
 
   return (
     <>
-      <Header />
-      <div className="flex gap-4 mb-4">
+    <Header />
+    <div className="container mx-auto px-4 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8">
+      <div className="flex flex-col gap-4 mb-4 sm:flex-row">
         <Filter label="Status" value={status} options={statusOptions} onChange={setStatus} />
         <Filter label="Region" value={region} options={regionOptions} onChange={setRegion} />
       </div>
       <Table status={status} region={region} />
+    </div>
     </>
   );
 }
