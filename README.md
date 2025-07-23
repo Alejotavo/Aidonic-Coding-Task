@@ -38,8 +38,8 @@ src/
  ├─ components/   # Reusable UI components
  ├─ pages/        # Route-level components for each page
  ├─ hooks/        # Custom React hooks for logic reuse
- ├─ services/     # API calls and data layer
- ├─ models/       # Shared models
+ ├─ services/     # API (Mock Data)
+ ├─ models/       # Reusable models
 ```
 
 ## 📸 Screenshots
