@@ -18,13 +18,26 @@ It demonstrates:
 ### ✅ Prerequisites
 - Node.js >= 18
 - npm or yarn
-- For mobile: Android Studio or Xcode installed and properly configured
 
 ---
 
 ### 🌐 Web
 **Install dependencies and run the development server:**
 ```bash
-cd web
 npm install
 npm run dev
+
+```
+## 🏗️ Architectural Overview
+
+The architecture follows a **component‑driven approach** with a clear separation of concerns:
+
+**Main structure:**
+```text
+src/
+ ├─ components/   # Reusable UI components
+ ├─ pages/        # Route-level components for each page
+ ├─ hooks/        # Custom React hooks for logic reuse
+ ├─ services/     # API calls and data layer
+ ├─ models/       # Shared models
+```
