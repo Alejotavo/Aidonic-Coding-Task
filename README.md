@@ -46,22 +46,22 @@ src/
 
 ### 🌐 Web Dashboard
 
-![Distribution List](./docs/screenshots/web-list.png)
+![Distribution List](./docs/web-list.png)
 *Distribution list with filters and pagination*
 
-![Distribution Details](./docs/screenshots/web-details.png)
+![Distribution Details](./docs/web-details.png)
 *Distribution details page with full info*
 
-![Charts Page](./docs/screenshots/web-charts.png)
+![Charts Page](./docs/web-charts.png)
 *Charts page showing distribution statistics*
 
 ---
 
 ### 📱 Mobile App
 
-![Mobile List](./docs/screenshots/mobile-list.png)
-*Mobile list screen with pull-to-refresh*
+![Mobile List](./docs/mobile-first.png)
+*Mobile list screen*
 
-![Mobile Details](./docs/screenshots/mobile-details.png)
+![Mobile Details](./docs/mobile-details.png)
 *Mobile details screen with full distribution info*
 
