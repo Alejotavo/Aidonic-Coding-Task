@@ -1,3 +1,4 @@
+import LineChart from "../components/UI/lineChart";
 import PieChart from "../components/UI/pieChart";
 
 
@@ -12,8 +13,7 @@ function Dashboard() {
         </div>
         <div className="w-full sm:w-1/2">
           <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center justify-center h-64">
-            <span className="text-lg font-semibold mb-2">Chart 2 (aquí irá el componente Chart)</span>
-            {/* Aquí irá el componente Chart 2 */}
+            <LineChart />
           </div>
         </div>
       </div>

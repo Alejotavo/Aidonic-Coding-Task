@@ -8,7 +8,7 @@ import type { Distribution, DistributionDetail } from "../models/beneficiary";
       region: 'West Nile',
       date: '2025-06-15',
       status: 'Planned',
-      beneficiaries: 1200,
+      beneficiaries: 1000,
       aidType: 'Food',
       deliveryChannel: 'Vouchers',
     },
