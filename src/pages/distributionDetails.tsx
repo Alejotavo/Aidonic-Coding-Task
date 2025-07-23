@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
-import { distributions, distributionDetails } from '../service/mockApi';
-import type { Distribution } from '../models/beneficiary';
+import { distributions, distributionDetails } from '../service/MockApi';
+import type { Distribution } from '../models/Beneficiary';
 
 function DistributionDetails() {
   const { id } = useParams<{ id: string }>();

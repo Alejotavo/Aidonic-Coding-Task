@@ -2,12 +2,12 @@
 import './App.css'
 import { useState, useCallback } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Filter from './components/filterComponent';
-import Table from './components/tableComponent';
-import Header from './components/ui/header';
-import { distributions } from './service/mockApi';
-import DistributionDetails from './pages/distributionDetails';
-import Dashboard from './pages/dashboard';
+import Filter from './components/FilterComponent';
+import Table from './components/TableComponent';
+import Header from './components/ui/Header';
+import { distributions } from './service/MockApi';
+import DistributionDetails from './pages/DistributionDetails';
+import Dashboard from './pages/Dashboard';
 
 const statusOptions = ['Planned', 'Ongoing', 'Completed'];
 const regionOptions = Array.from(new Set(distributions.map((d: { region: string }) => d.region)));

@@ -1,4 +1,4 @@
-import type { Distribution, DistributionDetail } from "../models/beneficiary";
+import type { Distribution, DistributionDetail } from "../models/Beneficiary";
 
 
   // 2. Creamos el mock principal
