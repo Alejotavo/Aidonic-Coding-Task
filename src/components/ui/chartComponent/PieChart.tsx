@@ -9,7 +9,7 @@ interface AidTypeCount {
 }
 
 function PieChart() {
-  // Contar la cantidad de cada tipo de ayuda (aidType)
+
   const aidTypeCounts: AidTypeCount = distributions.reduce((acc: AidTypeCount, curr) => {
     acc[curr.aidType] = (acc[curr.aidType] || 0) + 1;
     return acc;
@@ -22,12 +22,12 @@ function PieChart() {
         label: 'Distributions by aid type',
         data: Object.values(aidTypeCounts),
         backgroundColor: [
-          '#2563eb', // azul
-          '#f59e42', // naranja
-          '#10b981', // verde
-          '#f43f5e', // rojo
-          '#a78bfa', // violeta
-          '#fbbf24', // amarillo
+          '#2563eb',
+          '#f59e42', 
+          '#10b981',
+          '#f43f5e',
+          '#a78bfa',
+          '#fbbf24',
         ],
         borderColor: [
           '#1e40af',

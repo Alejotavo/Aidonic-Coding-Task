@@ -11,7 +11,6 @@ interface TableProps {
   region: string;
 }
 
-// Helper to get pill color classes by status
 const statusPillClass = (status: string) => {
   switch (status) {
     case 'Planned':
@@ -36,14 +35,12 @@ function Table({ status, region }: TableProps) {
     return result;
   }, [status, region]);
 
-  // Pagination logic
   const totalItems = filteredDistributions.length;
   const paginatedDistributions = useMemo(() => {
     const startIdx = (currentPage - 1) * itemsPerPage;
     return filteredDistributions.slice(startIdx, startIdx + itemsPerPage);
   }, [filteredDistributions, currentPage]);
 
-  // Reset to first page if filters change
   React.useEffect(() => {
     setCurrentPage(1);
   }, [status, region]);

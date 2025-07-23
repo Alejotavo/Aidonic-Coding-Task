@@ -19,7 +19,7 @@ const PaginationComponent: React.FC<PaginationProps> = ({
 
   const getPageNumbers = () => {
     const pages = [];
-    // Show up to 5 page numbers, with ellipsis if needed
+
     let start = Math.max(1, currentPage - 2);
     let end = Math.min(totalPages, currentPage + 2);
 
@@ -111,7 +111,6 @@ const PaginationComponent: React.FC<PaginationProps> = ({
   );
 };
 
-// Helper functions for ellipsis
 function startEllipsis(pageNumbers: number[]) {
   return pageNumbers[0] > 2;
 }

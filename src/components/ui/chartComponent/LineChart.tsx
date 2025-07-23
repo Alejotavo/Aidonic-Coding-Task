@@ -5,7 +5,7 @@ import { distributions } from '../../../service/MockApi';
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 function LineChart() {
-  // Usar cada distribución individual
+
   const labels = distributions.map((d) => d.date);
   const values = distributions.map((d) => d.beneficiaries);
 

@@ -1,7 +1,5 @@
 import type { Distribution, DistributionDetail } from "../models/Beneficiary";
 
-
-  // 2. Creamos el mock principal
   export const distributions: Distribution[] = [
     {
       id: 'dst--001',
@@ -113,7 +111,7 @@ import type { Distribution, DistributionDetail } from "../models/Beneficiary";
     },
   ];
   
-  // 3. Creamos el detalle mock
+  
   export const distributionDetails: Record<string, DistributionDetail> = {
     'dst--001': {
       id: 'dst--001',
