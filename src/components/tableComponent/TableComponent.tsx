@@ -3,7 +3,8 @@
 import { distributions } from '../../service/MockApi';
 import type { Distribution } from '../../models/Beneficiary';
 import { Link } from 'react-router-dom';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
+import PaginationComponent from '../ui/paginationComponent/PaginationComponent';
 
 interface TableProps {
   status: string;
@@ -25,12 +26,26 @@ const statusPillClass = (status: string) => {
 };
 
 function Table({ status, region }: TableProps) {
-  
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+
   const filteredDistributions = useMemo(() => {
     let result = distributions as Distribution[];
     if (status) result = result.filter(d => d.status === status);
     if (region) result = result.filter(d => d.region === region);
     return result;
+  }, [status, region]);
+
+  // Pagination logic
+  const totalItems = filteredDistributions.length;
+  const paginatedDistributions = useMemo(() => {
+    const startIdx = (currentPage - 1) * itemsPerPage;
+    return filteredDistributions.slice(startIdx, startIdx + itemsPerPage);
+  }, [filteredDistributions, currentPage]);
+
+  // Reset to first page if filters change
+  React.useEffect(() => {
+    setCurrentPage(1);
   }, [status, region]);
 
   return (
@@ -39,15 +54,15 @@ function Table({ status, region }: TableProps) {
         <table className="min-w-full border border-gray-300 rounded-lg overflow-hidden">
           <thead className="bg-gray-100">
             <tr>
-              <th className="px-4 py-2 border-b">Region</th>
-              <th className="px-4 py-2 border-b">Date</th>
-              <th className="px-4 py-2 border-b">Status</th>
-              <th className="px-4 py-2 border-b">Beneficiaries</th>
-              <th className="px-4 py-2 border-b">Action</th>
+              <th className="px-4 py-2 border-b text-center">Region</th>
+              <th className="px-4 py-2 border-b text-center">Date</th>
+              <th className="px-4 py-2 border-b text-center">Status</th>
+              <th className="px-4 py-2 border-b text-center">Beneficiaries</th>
+              <th className="px-4 py-2 border-b text-center">Action</th>
             </tr>
           </thead>
           <tbody>
-            {filteredDistributions.map((d, idx) => (
+            {paginatedDistributions.map((d, idx) => (
               <tr
                 key={d.id}
                 className={
@@ -55,27 +70,33 @@ function Table({ status, region }: TableProps) {
                   (idx % 2 === 0 ? 'bg-white' : 'bg-gray-50')
                 }
               >
-                <td className="px-4 py-2 border-b">{d.region}</td>
-                <td className="px-4 py-2 border-b">{d.date}</td>
-                <td className="px-4 py-2 border-b">
+                <td className="px-4 py-2 border-b text-left">{d.region}</td>
+                <td className="px-4 py-2 border-b text-center">{d.date}</td>
+                <td className="px-4 py-2 border-b text-center">
                   <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${statusPillClass(d.status)}`}>{d.status}</span>
                 </td>
-                <td className="px-4 py-2 border-b text-right">{d.beneficiaries}</td>
-                <td className="px-4 py-2 border-b">
+                <td className="px-4 py-2 border-b text-center">{d.beneficiaries}</td>
+                <td className="px-4 py-2 border-b text-center">
                   <Link to={`/distribution/${d.id}`} className="text-blue-600 hover:underline">Details</Link>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        <PaginationComponent
+          currentPage={currentPage}
+          totalItems={totalItems}
+          itemsPerPage={itemsPerPage}
+          onPageChange={setCurrentPage}
+        />
       </div>
 
       <div className="sm:hidden flex flex-col gap-4">
-        {filteredDistributions.map((row) => (
+        {paginatedDistributions.map((row) => (
           <div key={row.id} className="bg-white rounded-lg shadow p-4 flex flex-col gap-2 border border-gray-200">
             <div className="flex justify-between">
               <span className="font-semibold">Region:</span>
-              <span>{row.region}</span>
+              <span className="text-left w-full">{row.region}</span>
             </div>
             <div className="flex justify-between">
               <span className="font-semibold">Date:</span>
@@ -94,6 +115,12 @@ function Table({ status, region }: TableProps) {
             </div>
           </div>
         ))}
+        <PaginationComponent
+          currentPage={currentPage}
+          totalItems={totalItems}
+          itemsPerPage={itemsPerPage}
+          onPageChange={setCurrentPage}
+        />
       </div>
     </div>
   );
