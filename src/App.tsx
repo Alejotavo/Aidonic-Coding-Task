@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Filter from './components/filterComponent';
 import Table from './components/tableComponent';
-import Header from './components/UI/header';
+import Header from './components/ui/header';
 import { distributions } from './service/mockApi';
 import DistributionDetails from './pages/distributionDetails';
 import Dashboard from './pages/dashboard';

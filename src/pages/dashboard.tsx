@@ -1,6 +1,5 @@
-import LineChart from "../components/UI/lineChart";
-import PieChart from "../components/UI/pieChart";
-
+import LineChart from "../components/ui/LineChart";
+import PieChart from "../components/ui/PieChart";
 
 function Dashboard() {
   return (
