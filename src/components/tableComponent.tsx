@@ -34,7 +34,7 @@ function Table({ status, region }: TableProps) {
   }
 
   return (
-    <div className="bg-gray-100 shadow-md rounded-lg p-6 mb-6">
+    <div className="bg-white shadow-md rounded-lg p-6 mb-6">
       <div className="hidden sm:block overflow-x-auto">
         <table className="min-w-full border border-gray-300 rounded-lg overflow-hidden">
           <thead className="bg-gray-100">
