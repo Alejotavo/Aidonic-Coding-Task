@@ -1,3 +1,4 @@
+import React from "react";
 
 interface FilterProps {
   label: string;
@@ -30,4 +31,4 @@ function Filter({ label, value, options, onChange }: FilterProps) {
   );
 }
 
-export default Filter; 
+export default React.memo(Filter); 
