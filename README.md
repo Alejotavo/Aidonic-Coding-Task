@@ -1,6 +1,6 @@
 # Aidonic Coding Task: Aid Distribution Dashboard
 
-This project is a technical assignment for Aidonic, implementing an **Aid Distribution Dashboard** with both **Web (Next.js)** and **Mobile (React Native)** interfaces.
+This project is a technical assignment for Aidonic, implementing an **Aid Distribution Dashboard** with both **Web** and **Mobile (React Native)** interfaces.
 
 It demonstrates:
 - Clean architecture with Container/Presentation pattern
