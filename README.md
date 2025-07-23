@@ -41,3 +41,27 @@ src/
  ├─ services/     # API calls and data layer
  ├─ models/       # Shared models
 ```
+
+## 📸 Screenshots
+
+### 🌐 Web Dashboard
+
+![Distribution List](./docs/screenshots/web-list.png)
+*Distribution list with filters and pagination*
+
+![Distribution Details](./docs/screenshots/web-details.png)
+*Distribution details page with full info*
+
+![Charts Page](./docs/screenshots/web-charts.png)
+*Charts page showing distribution statistics*
+
+---
+
+### 📱 Mobile App
+
+![Mobile List](./docs/screenshots/mobile-list.png)
+*Mobile list screen with pull-to-refresh*
+
+![Mobile Details](./docs/screenshots/mobile-details.png)
+*Mobile details screen with full distribution info*
+
