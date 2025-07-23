@@ -3,7 +3,6 @@
 import { distributions } from '../service/mockApi';
 import type { Distribution } from '../models/beneficiary';
 import { Link } from 'react-router-dom';
-import React, { useMemo } from 'react';
 
 interface TableProps {
   status: string;
