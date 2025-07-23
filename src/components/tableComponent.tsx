@@ -3,13 +3,29 @@
 import { distributions } from '../service/mockApi';
 import type { Distribution } from '../models/beneficiary';
 import { Link } from 'react-router-dom';
+import React, { useMemo } from 'react';
 
 interface TableProps {
   status: string;
   region: string;
 }
 
+// Helper to get pill color classes by status
+const statusPillClass = (status: string) => {
+  switch (status) {
+    case 'Planned':
+      return 'bg-yellow-100 text-yellow-800 border-yellow-300';
+    case 'Ongoing':
+      return 'bg-blue-100 text-blue-800 border-blue-300';
+    case 'Completed':
+      return 'bg-green-100 text-green-800 border-green-300';
+    default:
+      return 'bg-gray-100 text-gray-800 border-gray-300';
+  }
+};
+
 function Table({ status, region }: TableProps) {
+
   let filteredDistributions = distributions as Distribution[];
   if (status) {
     filteredDistributions = filteredDistributions.filter(row => row.status === status);
@@ -42,7 +58,9 @@ function Table({ status, region }: TableProps) {
               >
                 <td className="px-4 py-2 border-b">{row.region}</td>
                 <td className="px-4 py-2 border-b">{row.date}</td>
-                <td className="px-4 py-2 border-b">{row.status}</td>
+                <td className="px-4 py-2 border-b">
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${statusPillClass(row.status)}`}>{row.status}</span>
+                </td>
                 <td className="px-4 py-2 border-b text-right">{row.beneficiaries}</td>
                 <td className="px-4 py-2 border-b">
                   <Link to={`/distribution/${row.id}`} className="text-blue-600 hover:underline">Details</Link>
@@ -66,7 +84,7 @@ function Table({ status, region }: TableProps) {
             </div>
             <div className="flex justify-between">
               <span className="font-semibold">Status:</span>
-              <span>{row.status}</span>
+              <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${statusPillClass(row.status)}`}>{row.status}</span>
             </div>
             <div className="flex justify-between">
               <span className="font-semibold">Beneficiaries:</span>
