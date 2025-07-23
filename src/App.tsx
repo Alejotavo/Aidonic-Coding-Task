@@ -2,12 +2,12 @@
 import './App.css'
 import { useState, useCallback } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Filter from './components/ui/filterComponent/FilterComponent';
-import Table from './components/tableComponent/TableComponent';
-import Header from './components/headerComponent/Header';
+import { Filter } from './components/Filter';
+import { TableContainer } from './components/Table';
+import { Header } from './components/Header';
 import { distributions } from './service/MockApi';
-import DistributionDetails from './pages/DistributionDetails';
-import Dashboard from './pages/Dashboard';
+import { DistributionDetailsContainer } from './components/DistributionDetails';
+import { Dashboard } from './components/Dashboard';
 
 const statusOptions = ['Planned', 'Ongoing', 'Completed'];
 const regionOptions = Array.from(new Set(distributions.map((d: { region: string }) => d.region)));
@@ -25,7 +25,7 @@ function MainPage() {
         <Filter label="Status" value={status} options={statusOptions} onChange={handleStatusChange} />
         <Filter label="Region" value={region} options={regionOptions} onChange={handleRegionChange} />
       </div>
-      <Table status={status} region={region} />
+      <TableContainer status={status} region={region} />
     </div>
   );
 }
@@ -37,7 +37,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/distribution/:id" element={<DistributionDetails />} />
+        <Route path="/distribution/:id" element={<DistributionDetailsContainer />} />
       </Routes>
     </BrowserRouter>
   );

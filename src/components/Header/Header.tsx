@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function Header() {
+export function Header() {
   return (
     <header className="bg-[#1a337d] text-white py-4 shadow-md">
       <div className="container mx-auto flex items-center justify-between px-4">
@@ -21,6 +21,4 @@ function Header() {
       </div>
     </header>
   );
-}
-
-export default Header;
+} 

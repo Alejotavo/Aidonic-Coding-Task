@@ -1,13 +1,13 @@
 import React from "react";
 
-interface FilterProps {
+export interface FilterProps {
   label: string;
   value: string;
   options: string[];
   onChange: (value: string) => void;
 }
 
-function Filter({ label, value, options, onChange }: FilterProps) {
+export function Filter({ label, value, options, onChange }: FilterProps) {
   return (
     <div className="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center">
       <label
@@ -29,6 +29,4 @@ function Filter({ label, value, options, onChange }: FilterProps) {
       </select>
     </div>
   );
-}
-
-export default React.memo(Filter); 
+} 

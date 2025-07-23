@@ -1,11 +1,10 @@
 import { Line } from 'react-chartjs-2';
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
-import { distributions } from '../../../service/MockApi';
+import { distributions } from '../../service/MockApi';
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-function LineChart() {
-
+export function LineChart() {
   const labels = distributions.map((d) => d.date);
   const values = distributions.map((d) => d.beneficiaries);
 
@@ -83,6 +82,4 @@ function LineChart() {
       </div>
     </div>
   );
-}
-
-export default LineChart;
+} 

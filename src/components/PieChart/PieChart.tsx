@@ -1,6 +1,6 @@
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { distributions } from '../../../service/MockApi';
+import { distributions } from '../../service/MockApi';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -8,8 +8,7 @@ interface AidTypeCount {
   [aidType: string]: number;
 }
 
-function PieChart() {
-
+export function PieChart() {
   const aidTypeCounts: AidTypeCount = distributions.reduce((acc: AidTypeCount, curr) => {
     acc[curr.aidType] = (acc[curr.aidType] || 0) + 1;
     return acc;
@@ -75,6 +74,4 @@ function PieChart() {
       </div>
     </div>
   );
-}
-
-export default PieChart;
+} 

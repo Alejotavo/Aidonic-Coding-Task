@@ -1,12 +1,12 @@
-import { useParams, Link } from 'react-router-dom';
-import { distributions, distributionDetails } from '../service/MockApi';
-import type { Distribution } from '../models/Beneficiary';
+import { Link } from 'react-router-dom';
+import type { Distribution, DistributionDetail } from '../../models/Beneficiary';
 
-function DistributionDetails() {
-  const { id } = useParams<{ id: string }>();
-  const distribution = (distributions as Distribution[]).find(d => String(d.id) === id);
-  const detail = id ? distributionDetails[id] : undefined;
+export interface DistributionDetailsProps {
+  distribution: Distribution | undefined;
+  detail: DistributionDetail | undefined;
+}
 
+export function DistributionDetails({ distribution, detail }: DistributionDetailsProps) {
   if (!distribution) {
     return (
       <div className="p-4">
@@ -43,6 +43,4 @@ function DistributionDetails() {
       </div>
     </div>
   );
-}
-
-export default DistributionDetails;
+} 

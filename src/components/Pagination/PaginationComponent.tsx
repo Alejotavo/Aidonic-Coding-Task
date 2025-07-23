@@ -1,18 +1,18 @@
 import React from "react";
 
-interface PaginationProps {
+export interface PaginationProps {
   currentPage: number;
   totalItems: number;
   itemsPerPage?: number;
   onPageChange: (page: number) => void;
 }
 
-const PaginationComponent: React.FC<PaginationProps> = ({
+export function PaginationComponent({
   currentPage,
   totalItems,
   itemsPerPage = 6,
   onPageChange,
-}) => {
+}: PaginationProps) {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   if (totalPages <= 1) return null;
@@ -109,13 +109,11 @@ const PaginationComponent: React.FC<PaginationProps> = ({
       </ul>
     </nav>
   );
-};
+}
 
 function startEllipsis(pageNumbers: number[]) {
   return pageNumbers[0] > 2;
 }
 function endEllipsis(pageNumbers: number[], totalPages: number) {
   return pageNumbers[pageNumbers.length - 1] < totalPages - 1;
-}
-
-export default PaginationComponent;
+} 

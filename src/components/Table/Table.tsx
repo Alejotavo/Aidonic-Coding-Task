@@ -1,14 +1,14 @@
 
-
-import { distributions } from '../../service/MockApi';
-import type { Distribution } from '../../models/Beneficiary';
 import { Link } from 'react-router-dom';
-import React, { useMemo, useState } from 'react';
-import PaginationComponent from '../ui/paginationComponent/PaginationComponent';
+import type { Distribution } from '../../models/Beneficiary';
+import { PaginationComponent } from '../Pagination/PaginationComponent';
 
-interface TableProps {
-  status: string;
-  region: string;
+export interface TablePresentationalProps {
+  distributions: Distribution[];
+  currentPage: number;
+  itemsPerPage: number;
+  totalItems: number;
+  onPageChange: (page: number) => void;
 }
 
 const statusPillClass = (status: string) => {
@@ -24,29 +24,16 @@ const statusPillClass = (status: string) => {
   }
 };
 
-function Table({ status, region }: TableProps) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
-
-  const filteredDistributions = useMemo(() => {
-    let result = distributions as Distribution[];
-    if (status) result = result.filter(d => d.status === status);
-    if (region) result = result.filter(d => d.region === region);
-    return result;
-  }, [status, region]);
-
-  const totalItems = filteredDistributions.length;
-  const paginatedDistributions = useMemo(() => {
-    const startIdx = (currentPage - 1) * itemsPerPage;
-    return filteredDistributions.slice(startIdx, startIdx + itemsPerPage);
-  }, [filteredDistributions, currentPage]);
-
-  React.useEffect(() => {
-    setCurrentPage(1);
-  }, [status, region]);
-
+export function Table({
+  distributions,
+  currentPage,
+  itemsPerPage,
+  totalItems,
+  onPageChange,
+}: TablePresentationalProps) {
   return (
     <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+      {/* Desktop Table */}
       <div className="hidden sm:block overflow-x-auto">
         <table className="min-w-full border border-gray-300 rounded-lg overflow-hidden">
           <thead className="bg-gray-100">
@@ -59,7 +46,7 @@ function Table({ status, region }: TableProps) {
             </tr>
           </thead>
           <tbody>
-            {paginatedDistributions.map((d, idx) => (
+            {distributions.map((d, idx) => (
               <tr
                 key={d.id}
                 className={
@@ -84,12 +71,12 @@ function Table({ status, region }: TableProps) {
           currentPage={currentPage}
           totalItems={totalItems}
           itemsPerPage={itemsPerPage}
-          onPageChange={setCurrentPage}
+          onPageChange={onPageChange}
         />
       </div>
-
+      {/* Mobile Cards */}
       <div className="sm:hidden flex flex-col gap-4">
-        {paginatedDistributions.map((row) => (
+        {distributions.map((row) => (
           <div key={row.id} className="bg-white rounded-lg shadow p-4 flex flex-col gap-2 border border-gray-200">
             <div className="flex justify-between">
               <span className="font-semibold">Region:</span>
@@ -116,11 +103,9 @@ function Table({ status, region }: TableProps) {
           currentPage={currentPage}
           totalItems={totalItems}
           itemsPerPage={itemsPerPage}
-          onPageChange={setCurrentPage}
+          onPageChange={onPageChange}
         />
       </div>
     </div>
   );
-}
-
-export default React.memo(Table); 
+} 
