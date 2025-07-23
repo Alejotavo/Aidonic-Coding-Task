@@ -2,9 +2,9 @@
 import './App.css'
 import { useState, useCallback } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Filter from './components/FilterComponent';
-import Table from './components/TableComponent';
-import Header from './components/ui/Header';
+import Filter from './components/ui/filterComponent/FilterComponent';
+import Table from './components/tableComponent/TableComponent';
+import Header from './components/headerComponent/Header';
 import { distributions } from './service/MockApi';
 import DistributionDetails from './pages/DistributionDetails';
 import Dashboard from './pages/Dashboard';

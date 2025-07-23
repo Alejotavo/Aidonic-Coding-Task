@@ -1,7 +1,7 @@
 
 
-import { distributions } from '../service/MockApi';
-import type { Distribution } from '../models/Beneficiary';
+import { distributions } from '../../service/MockApi';
+import type { Distribution } from '../../models/Beneficiary';
 import { Link } from 'react-router-dom';
 import React, { useMemo } from 'react';
 
