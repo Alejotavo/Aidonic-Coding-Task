@@ -3,6 +3,7 @@
 import { distributions } from '../service/mockApi';
 import type { Distribution } from '../models/beneficiary';
 import { Link } from 'react-router-dom';
+import React, { useMemo } from 'react';
 
 interface TableProps {
   status: string;
@@ -24,14 +25,13 @@ const statusPillClass = (status: string) => {
 };
 
 function Table({ status, region }: TableProps) {
-
-  let filteredDistributions = distributions as Distribution[];
-  if (status) {
-    filteredDistributions = filteredDistributions.filter(row => row.status === status);
-  }
-  if (region) {
-    filteredDistributions = filteredDistributions.filter(row => row.region === region);
-  }
+  
+  const filteredDistributions = useMemo(() => {
+    let result = distributions as Distribution[];
+    if (status) result = result.filter(d => d.status === status);
+    if (region) result = result.filter(d => d.region === region);
+    return result;
+  }, [status, region]);
 
   return (
     <div className="bg-white shadow-md rounded-lg p-6 mb-6">
@@ -47,22 +47,22 @@ function Table({ status, region }: TableProps) {
             </tr>
           </thead>
           <tbody>
-            {filteredDistributions.map((row, idx) => (
+            {filteredDistributions.map((d, idx) => (
               <tr
-                key={row.id}
+                key={d.id}
                 className={
                   `hover:bg-blue-50 transition-colors ` +
                   (idx % 2 === 0 ? 'bg-white' : 'bg-gray-50')
                 }
               >
-                <td className="px-4 py-2 border-b">{row.region}</td>
-                <td className="px-4 py-2 border-b">{row.date}</td>
+                <td className="px-4 py-2 border-b">{d.region}</td>
+                <td className="px-4 py-2 border-b">{d.date}</td>
                 <td className="px-4 py-2 border-b">
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${statusPillClass(row.status)}`}>{row.status}</span>
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${statusPillClass(d.status)}`}>{d.status}</span>
                 </td>
-                <td className="px-4 py-2 border-b text-right">{row.beneficiaries}</td>
+                <td className="px-4 py-2 border-b text-right">{d.beneficiaries}</td>
                 <td className="px-4 py-2 border-b">
-                  <Link to={`/distribution/${row.id}`} className="text-blue-600 hover:underline">Details</Link>
+                  <Link to={`/distribution/${d.id}`} className="text-blue-600 hover:underline">Details</Link>
                 </td>
               </tr>
             ))}
@@ -99,4 +99,4 @@ function Table({ status, region }: TableProps) {
   );
 }
 
-export default Table; 
+export default React.memo(Table); 
