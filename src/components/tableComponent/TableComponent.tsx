@@ -93,7 +93,7 @@ function Table({ status, region }: TableProps) {
           <div key={row.id} className="bg-white rounded-lg shadow p-4 flex flex-col gap-2 border border-gray-200">
             <div className="flex justify-between">
               <span className="font-semibold">Region:</span>
-              <span className="text-left w-full">{row.region}</span>
+              <span className="text-right w-full">{row.region}</span>
             </div>
             <div className="flex justify-between">
               <span className="font-semibold">Date:</span>
