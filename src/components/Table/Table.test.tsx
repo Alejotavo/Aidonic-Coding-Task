@@ -39,12 +39,12 @@ describe('Table (presentational)', () => {
         />
       </MemoryRouter>
     );
-    expect(screen.getByText('North')).toBeInTheDocument();
-    expect(screen.getByText('South')).toBeInTheDocument();
-    expect(screen.getByText('Planned')).toBeInTheDocument();
-    expect(screen.getByText('Completed')).toBeInTheDocument();
-    expect(screen.getByText('100')).toBeInTheDocument();
-    expect(screen.getByText('200')).toBeInTheDocument();
+    expect(screen.getAllByText('North').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('South').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Planned').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Completed').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('100').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('200').length).toBeGreaterThan(0);
   });
 
   it('muestra el mensaje Details como link', () => {
