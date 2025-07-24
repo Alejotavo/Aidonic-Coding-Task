@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { distributions } from '../../service/MockApi';
 import type { Distribution } from '../../models/Beneficiary';
 import { Table } from './Table';
