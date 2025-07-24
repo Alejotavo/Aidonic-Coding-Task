@@ -20,7 +20,7 @@ describe('DistributionDetailsContainer', () => {
     });
   });
 
-  it('renderiza los detalles de la distribución', () => {
+  it('renders the distribution details', () => {
     render(
       <MemoryRouter initialEntries={["/distribution/1"]}>
         <Routes>

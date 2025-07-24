@@ -27,7 +27,7 @@ describe('Table (presentational)', () => {
     },
   ];
 
-  it('muestra los datos de las distribuciones en la tabla', () => {
+  it('shows the distribution data in the table', () => {
     render(
       <MemoryRouter>
         <Table
@@ -47,7 +47,7 @@ describe('Table (presentational)', () => {
     expect(screen.getAllByText('200').length).toBeGreaterThan(0);
   });
 
-  it('muestra el mensaje Details como link', () => {
+  it('shows the Details message as a link', () => {
     render(
       <MemoryRouter>
         <Table

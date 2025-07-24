@@ -1,45 +1,11 @@
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { distributions } from '../../service/MockApi';
+import { usePieChartData } from './usePieChartData';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-interface AidTypeCount {
-  [aidType: string]: number;
-}
-
 export function PieChart() {
-  const aidTypeCounts: AidTypeCount = distributions.reduce((acc: AidTypeCount, curr) => {
-    acc[curr.aidType] = (acc[curr.aidType] || 0) + 1;
-    return acc;
-  }, {});
-
-  const data = {
-    labels: Object.keys(aidTypeCounts),
-    datasets: [
-      {
-        label: 'Distributions by aid type',
-        data: Object.values(aidTypeCounts),
-        backgroundColor: [
-          '#2563eb',
-          '#f59e42', 
-          '#10b981',
-          '#f43f5e',
-          '#a78bfa',
-          '#fbbf24',
-        ],
-        borderColor: [
-          '#1e40af',
-          '#ea580c',
-          '#047857',
-          '#be123c',
-          '#7c3aed',
-          '#b45309',
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
+  const { data } = usePieChartData();
 
   const options = {
     responsive: true,

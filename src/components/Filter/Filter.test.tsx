@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { Filter } from './Filter';
 
 describe('Filter', () => {
-  it('renderiza el label y las opciones, y llama a onChange', () => {
+  it('renders the label and options, and calls onChange', () => {
     const handleChange = vi.fn();
     render(
       <Filter

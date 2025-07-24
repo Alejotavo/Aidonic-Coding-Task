@@ -16,7 +16,7 @@ vi.mock('../../service/MockApi', () => ({
 import { TableContainer } from './TableContainer';
 
 describe('TableContainer', () => {
-  it('renderiza solo las filas con el status filtrado', () => {
+  it('renders only the rows with the filtered status', () => {
     render(
       <MemoryRouter>
         <TableContainer status="Completed" region="" />
