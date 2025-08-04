@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
 import { render, screen } from '@testing-library/react';
 import { Table } from './Table';
-import type { Distribution } from '../../models/Beneficiary';
+import type { Distribution } from '../../models';
 import { MemoryRouter } from 'react-router-dom';
 
 

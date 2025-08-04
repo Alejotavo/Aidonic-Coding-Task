@@ -1,1 +1,2 @@
-export * from './PaginationComponent'; 
+export * from './PaginationComponent';
+export * from './usePaginatedData'; 

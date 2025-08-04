@@ -1,2 +1,3 @@
 export * from './Table';
-export * from './TableContainer'; 
+export * from './TableContainer';
+export * from './useFilteredDistributions'; 

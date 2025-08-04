@@ -1,18 +1,9 @@
+/**
+ * Represents a beneficiary in the aid distribution system
+ */
 export interface Beneficiary {
-    id: string;
-    name: string;
-  }
-  
-  export interface Distribution {
-    id: string;
-    region: string;
-    date: string;
-    status: string;
-    beneficiaries: number;
-    aidType: string;
-    deliveryChannel: string;
-  }
-  
-  export interface DistributionDetail extends Distribution {
-    beneficiaryList: Beneficiary[];
-  } 
+  /** Unique identifier for the beneficiary */
+  id: string;
+  /** Full name of the beneficiary */
+  name: string;
+} 

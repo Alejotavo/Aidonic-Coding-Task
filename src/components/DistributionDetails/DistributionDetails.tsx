@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import type { Distribution, DistributionDetail } from '../../models/Beneficiary';
+import type { Distribution, DistributionDetail } from '../../models';
 
 export interface DistributionDetailsProps {
   distribution: Distribution | undefined;
